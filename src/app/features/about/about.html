@@ -1,0 +1,172 @@
+<section id="about" class="about"
+  (mousemove)="onMove($event)"
+  (mouseleave)="onLeave()"
+  #aboutSection>
+
+  <canvas #netCanvas class="net-canvas" aria-hidden="true"></canvas>
+  <div class="spotlight" [style.background]="spotBg"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <div class="sep" aria-hidden="true"></div>
+
+  <div class="about-inner">
+
+    <div class="eyebrow" [class.go]="v0">
+      <span class="ew-line"></span>
+      <span class="ew-num">// 01</span>
+      <span class="ew-title">About Me</span>
+      <span class="ew-line"></span>
+    </div>
+
+    <div class="top-grid">
+
+      <div class="bio-col" [class.go]="v0">
+
+        <h2 class="about-h2">
+          I build things that<br>
+          <span class="grad-text">actually work</span>
+        </h2>
+
+        <p class="bio-p">
+          I'm a BS Information Technology student at the
+          <span class="hl">University of Gujrat</span>,
+          graduating in 2026. I specialise in building production-grade
+          web apps, AI-powered pipelines, and IoT systems — clean code
+          that solves real problems and ships on time.
+        </p>
+
+        <p class="bio-p">
+          Outside code I enjoy reverse-engineering how things work,
+          contributing to open-source, and exploring the edge
+          between hardware and software.
+        </p>
+
+        <ul class="check-list">
+          <li *ngFor="let h of highlights; let i = index"
+              [style.--i]="i"
+              [class.go]="v0">
+            <span class="ch-icon">✓</span>
+            <span>{{ h }}</span>
+          </li>
+        </ul>
+
+        <div class="cta-row">
+          <span class="mag"
+            (mousemove)="onMag($event,'cv')"
+            (mouseleave)="offMag('cv')"
+            [style.transform]="magStyle('cv')">
+            <a href="resume/Shahmir-Farooq-CV.pdf"
+               download class="btn-solid">Download CV</a>
+          </span>
+          <span class="mag"
+            (mousemove)="onMag($event,'ct')"
+            (mouseleave)="offMag('ct')"
+            [style.transform]="magStyle('ct')">
+            <a href="#contact" class="btn-ghost">Get in touch</a>
+          </span>
+        </div>
+
+      </div>
+
+      <div class="term-col" [class.go]="v0">
+        <div class="terminal">
+          <div class="term-bar">
+            <span class="tdot tr"></span>
+            <span class="tdot ty"></span>
+            <span class="tdot tg"></span>
+            <span class="term-fname">shahmir.config.ts</span>
+          </div>
+          <div class="term-body">
+            <p class="tl">
+              <span class="tkw">const </span>
+              <span class="tvar">developer</span>
+              <span class="top"> = </span>
+              <span class="tbr">&#123;</span>
+            </p>
+            <p class="tl ti">
+              <span class="tkey">name</span>
+              <span class="top">: </span>
+              <span class="tstr">"Shahmir Farooq"</span>
+              <span class="top">,</span>
+            </p>
+            <p class="tl ti">
+              <span class="tkey">role</span>
+              <span class="top">: </span>
+              <span class="tstr">"AI Engineer · IoT Builder"</span>
+              <span class="top">,</span>
+            </p>
+            <p class="tl ti">
+              <span class="tkey">university</span>
+              <span class="top">: </span>
+              <span class="tstr">"University of Gujrat"</span>
+              <span class="top">,</span>
+            </p>
+            <p class="tl ti">
+              <span class="tkey">graduation</span>
+              <span class="top">: </span>
+              <span class="tnum">2026</span>
+              <span class="top">,</span>
+            </p>
+            <p class="tl ti">
+              <span class="tkey">stack</span>
+              <span class="top">: </span>
+              <span class="tbr">[</span>
+            </p>
+            <p class="tl ti2" *ngFor="let s of stackLines">
+              <span class="tstr">"{{ s }}"</span>
+              <span class="top">,</span>
+            </p>
+            <p class="tl ti">
+              <span class="tbr">]</span>
+              <span class="top">,</span>
+            </p>
+            <p class="tl ti">
+              <span class="tkey">openToWork</span>
+              <span class="top">: </span>
+              <span class="tbool">true</span>
+            </p>
+            <p class="tl">
+              <span class="tbr">&#125;</span>
+            </p>
+            <p class="tl tcursor-line">
+              <span class="tprompt">&#62;&nbsp;</span>
+              <span class="tcursor"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stats-grid" #statsSection>
+      <div class="stat-card"
+           *ngFor="let s of stats; let i = index"
+           [style.--i]="i"
+           [class.go]="v1">
+        <span class="sc-icon">{{ s.icon }}</span>
+        <strong class="sc-val">{{ s.current }}<span class="sc-suf">{{ s.suffix }}</span></strong>
+        <span class="sc-lbl">{{ s.label }}</span>
+        <div class="sc-bar">
+          <div class="sc-fill" [style.width.%]="v1 ? s.pct : 0"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="focus-grid" #focusSection>
+      <div class="focus-card"
+           *ngFor="let f of focusAreas; let i = index"
+           [style.--i]="i"
+           [class.go]="v2">
+        <div class="fc-icon">{{ f.icon }}</div>
+        <h3 class="fc-title">{{ f.title }}</h3>
+        <p class="fc-desc">{{ f.desc }}</p>
+        <div class="fc-tags">
+          <span *ngFor="let t of f.tags">{{ t }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

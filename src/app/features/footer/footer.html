@@ -1,0 +1,103 @@
+<footer class="footer">
+
+  <div class="footer-sep" aria-hidden="true"></div>
+
+  <div class="footer-inner">
+
+    <!-- top grid -->
+    <div class="footer-grid">
+
+      <!-- brand -->
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <img src="images/profile.jpg" alt="Shahmir Farooq">
+        </div>
+        <div class="brand-text">
+          <h2 class="brand-name">
+            Shahmir<span class="brand-dot">.</span>
+          </h2>
+          <p class="brand-role">
+            AI Engineer &nbsp;·&nbsp; IoT Builder &nbsp;·&nbsp; Full-Stack Dev
+          </p>
+        </div>
+        <p class="brand-desc">
+          Building scalable web apps, AI-powered systems and IoT solutions —
+          clean code that ships on time and solves real problems.
+        </p>
+        <a href="https://wa.me/923444010611"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="footer-hire">
+          <span class="hire-dot"></span>
+          Available for hire
+        </a>
+      </div>
+
+      <!-- quick links -->
+      <div class="footer-col">
+        <h3 class="fc-title">
+          <span class="fc-title-num">// </span>Quick links
+        </h3>
+        <nav class="fc-links">
+          <a *ngFor="let l of navLinks" [href]="l.href">
+            <span class="fl-arrow">→</span>
+            <span>{{ l.label }}</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- contact -->
+      <div class="footer-col">
+        <h3 class="fc-title">
+          <span class="fc-title-num">// </span>Contact
+        </h3>
+        <div class="fc-links">
+          <a href="mailto:fshahmir45@gmail.com" class="fc-contact-row">
+            <span class="fci">✉</span>
+            <span>fshahmir45&#64;gmail.com</span>
+          </a>
+          <a href="https://wa.me/923444010611"
+             target="_blank" rel="noopener noreferrer"
+             class="fc-contact-row">
+            <span class="fci">◉</span>
+            <span>+92 344 4010611</span>
+          </a>
+          <a href="https://github.com/Shahmir-056"
+             target="_blank" rel="noopener noreferrer"
+             class="fc-contact-row">
+            <span class="fci">◈</span>
+            <span>github.com/Shahmir-056</span>
+          </a>
+        </div>
+
+        <div class="tech-built">
+          <span class="tb-label">Built with</span>
+          <div class="tb-chips">
+            <span>Angular</span>
+            <span>Firebase</span>
+            <span>TypeScript</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- bottom bar -->
+    <div class="footer-bottom">
+      <p class="fb-copy">
+        &copy; {{ year }} Shahmir Farooq &nbsp;·&nbsp;
+        <span class="fb-green">All rights reserved</span>
+      </p>
+      <div class="fb-right">
+        <span class="fb-mono">v1.0.0</span>
+        <span class="fb-sep">·</span>
+        <span class="fb-mono fb-green">
+          <span class="fb-dot"></span>
+          Live
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+</footer>

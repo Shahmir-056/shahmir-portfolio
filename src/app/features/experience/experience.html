@@ -1,0 +1,107 @@
+<section id="experience" class="experience"
+  (mousemove)="onMove($event)"
+  (mouseleave)="onLeave()"
+  #expSection>
+
+  <canvas #netCanvas class="net-canvas" aria-hidden="true"></canvas>
+  <div class="spotlight" [style.background]="spotBg"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="sep" aria-hidden="true"></div>
+
+  <div class="exp-inner">
+
+    <div class="eyebrow" [class.go]="v0">
+      <span class="ew-line"></span>
+      <span class="ew-num">// 04</span>
+      <span class="ew-title">Experience &amp; Education</span>
+      <span class="ew-line"></span>
+    </div>
+
+    <!-- title row -->
+    <div class="title-row" [class.go]="v0">
+      <div class="title-left">
+        <h2 class="exp-h2">
+          My <span class="grad-text">journey</span>
+        </h2>
+        <p class="exp-sub">
+          From university halls to production servers —
+          every milestone that made me a better engineer.
+        </p>
+      </div>
+      <div class="stat-strip">
+        <div class="ss-item" *ngFor="let s of stripStats">
+          <strong class="ss-val">{{ s.val }}</strong>
+          <span class="ss-lbl">{{ s.lbl }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- filter tabs -->
+    <div class="filter-row" [class.go]="v0">
+      <button
+        *ngFor="let f of filters"
+        class="f-btn"
+        [class.active]="activeFilter === f"
+        (click)="setFilter(f)">
+        <span class="f-col-dot" [ngClass]="'fcd-' + f.toLowerCase()"></span>
+        {{ f }}
+        <span class="f-count">{{ getCount(f) }}</span>
+      </button>
+    </div>
+
+    <!-- kanban board -->
+    <div class="kanban" #gridSection
+         [class.single-col]="activeFilter !== 'All'">
+
+      <div class="k-col"
+           *ngFor="let col of visibleColumns; let ci = index"
+           [ngClass]="'kc-' + col.typeKey">
+
+        <!-- column header -->
+        <div class="k-col-header">
+          <div class="k-col-title-row">
+            <span class="k-col-icon">{{ col.icon }}</span>
+            <span class="k-col-name">{{ col.label }}</span>
+            <span class="k-col-count">{{ getItems(col.type).length }}</span>
+          </div>
+          <div class="k-col-bar"></div>
+        </div>
+
+        <!-- cards -->
+        <div class="k-col-cards">
+          <div class="k-card"
+               *ngFor="let item of getItems(col.type); let i = index"
+               [style.--i]="ci * 3 + i"
+               [class.go]="v1">
+
+            <div class="kc-top">
+              <span class="kc-year">{{ item.year }}</span>
+              <span class="kc-status" [ngClass]="'ks-' + item.statusKey">
+                <i class="kc-st-dot"></i>{{ item.statusLabel }}
+              </span>
+            </div>
+
+            <h3 class="kc-title">{{ item.title }}</h3>
+
+            <p class="kc-org">
+              <span class="kc-org-dot"></span>
+              {{ item.org }}
+            </p>
+
+            <p class="kc-desc">{{ item.description }}</p>
+
+            <div class="kc-tags">
+              <span *ngFor="let t of item.tags">{{ t }}</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

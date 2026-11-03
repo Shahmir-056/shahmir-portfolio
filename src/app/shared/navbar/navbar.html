@@ -1,0 +1,119 @@
+<header class="navbar" [class.scrolled]="isScrolled">
+
+  <!-- scroll progress bar -->
+  <div class="scroll-progress" [style.width.%]="scrollProgress"></div>
+
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a href="#home" class="nav-logo" (click)="setActive('home')">
+      <div class="logo-avatar">
+        <img src="images/profile.jpg" alt="Shahmir Farooq">
+        <span class="avatar-ring"></span>
+      </div>
+      <div class="logo-text-wrap">
+        <span class="logo-name">Shahmir<span class="logo-accent">.</span></span>
+        <span class="logo-sub"> Dev & Ai Engineer</span>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <div class="nav-track">
+        <span
+          class="nav-pill"
+          [style.left.px]="pillLeft"
+          [style.width.px]="pillWidth"
+          [class.visible]="pillVisible">
+        </span>
+
+        <a *ngFor="let link of links; let i = index"
+           [href]="link.href"
+           class="nav-link"
+           [class.active]="activeSection === link.id"
+           [style.--i]="i"
+           #navLinkEl
+           (click)="setActive(link.id)"
+           (mouseenter)="onLinkHover($event)"
+           (mouseleave)="onLinkLeave()">
+          <span class="link-icon">{{ link.icon }}</span>
+          <span class="link-label">{{ link.label }}</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Right side -->
+    <div class="nav-actions">
+
+      <span class="magnet-el"
+        (mousemove)="onMagnet($event)"
+        (mouseleave)="offMagnet()"
+        [style.transform]="magnetStyle">
+        <a href="https://wa.me/923444010611"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="hire-btn">
+          <span class="hire-dot"></span>
+          Hire me
+        </a>
+      </span>
+
+      <button
+        class="hamburger"
+        [class.is-open]="isMenuOpen"
+        (click)="toggleMenu()"
+        aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line class="ham-line ham-top"    x1="3" y1="6"  x2="21" y2="6"/>
+          <line class="ham-line ham-mid"    x1="3" y1="12" x2="21" y2="12"/>
+          <line class="ham-line ham-bottom" x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-overlay" [class.open]="isMenuOpen" (click)="closeMenu()"></div>
+
+  <aside class="mobile-drawer" [class.open]="isMenuOpen">
+
+    <div class="drawer-header">
+      <div class="drawer-avatar">
+        <img src="images/profile.jpg" alt="Shahmir Farooq">
+      </div>
+      <div>
+        <p class="drawer-name">Shahmir Farooq</p>
+        <p class="drawer-role">AI Engineer · IoT Builder</p>
+      </div>
+      <button class="drawer-close" (click)="closeMenu()" aria-label="Close menu">
+        &#10005;
+      </button>
+    </div>
+
+    <nav class="drawer-links">
+      <a *ngFor="let link of links; let i = index"
+         [href]="link.href"
+         [class.active]="activeSection === link.id"
+         [style.--i]="i"
+         (click)="setActive(link.id)">
+        <span class="dl-icon">{{ link.icon }}</span>
+        <span>{{ link.label }}</span>
+        <span class="dl-arrow">&#8594;</span>
+      </a>
+    </nav>
+
+    <div class="drawer-footer">
+      <a href="https://wa.me/923444010611"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="drawer-hire">
+        <span class="hire-dot"></span>
+        Hire me on WhatsApp
+      </a>
+    </div>
+
+  </aside>
+
+</header>

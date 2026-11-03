@@ -1,0 +1,73 @@
+<section id="skills" class="skills"
+  (mousemove)="onMove($event)"
+  (mouseleave)="onLeave()"
+  #skillsSection>
+
+  <canvas #netCanvas class="net-canvas" aria-hidden="true"></canvas>
+  <div class="spotlight" [style.background]="spotBg"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <div class="sep" aria-hidden="true"></div>
+
+  <div class="skills-inner">
+
+    <div class="eyebrow" [class.go]="v0">
+      <span class="ew-line"></span>
+      <span class="ew-num">// 02</span>
+      <span class="ew-title">Technical Skills</span>
+      <span class="ew-line"></span>
+    </div>
+
+    <div class="section-head" [class.go]="v0">
+      <h2 class="skills-h2">
+        Technologies I <span class="grad-text">work with</span>
+      </h2>
+      <p class="skills-sub">
+        Tools and technologies I use to build production-ready
+        products across web, mobile, AI and IoT.
+      </p>
+    </div>
+
+    <div class="cat-grid" #catSection>
+      <div class="cat-card"
+           *ngFor="let cat of categories; let i = index"
+           [style.--i]="i"
+           [class.go]="v1">
+        <div class="cat-head">
+          <div class="cat-icon-wrap">
+            <span class="cat-icon">{{ cat.icon }}</span>
+          </div>
+          <span class="cat-title">{{ cat.title }}</span>
+        </div>
+        <div class="cat-chips">
+          <span *ngFor="let s of cat.skills">{{ s }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prof-wrap" #profSection>
+      <h3 class="prof-heading" [class.go]="v2">
+        <span class="grad-text">Proficiency</span> levels
+      </h3>
+      <div class="prof-grid">
+        <div class="prof-item"
+             *ngFor="let p of proficiency; let i = index"
+             [style.--i]="i"
+             [class.go]="v2">
+          <div class="prof-top">
+            <span class="prof-name">{{ p.name }}</span>
+            <span class="prof-pct">{{ v2 ? p.level : 0 }}%</span>
+          </div>
+          <div class="prof-bar">
+            <div class="prof-fill"
+                 [style.width.%]="v2 ? p.level : 0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

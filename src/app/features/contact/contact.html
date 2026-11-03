@@ -1,0 +1,169 @@
+<section id="contact" class="contact"
+  (mousemove)="onMove($event)"
+  (mouseleave)="onLeave()"
+  #contactSection>
+
+  <canvas #netCanvas class="net-canvas" aria-hidden="true"></canvas>
+  <div class="spotlight" [style.background]="spotBg"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="sep" aria-hidden="true"></div>
+
+  <div class="contact-inner">
+
+    <div class="eyebrow" [class.go]="v0">
+      <span class="ew-line"></span>
+      <span class="ew-num">// 05</span>
+      <span class="ew-title">Get In Touch</span>
+      <span class="ew-line"></span>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- left -->
+      <div class="contact-left" [class.go]="v0">
+
+        <h2 class="contact-h2">
+          Let's <span class="grad-text">work together</span>
+        </h2>
+
+        <p class="contact-sub">
+          I'm open to full-time roles, freelance projects and
+          interesting collaborations. Drop me a message and
+          I'll get back to you within 24 hours.
+        </p>
+
+        <div class="info-cards">
+
+          <a href="mailto:fshahmir45@gmail.com"
+             class="info-card ic-email"
+             [style.--ci]="0">
+            <div class="ic-icon">✉</div>
+            <div class="ic-text">
+              <span class="ic-label">Email</span>
+              <span class="ic-val">fshahmir45&#64;gmail.com</span>
+            </div>
+            <span class="ic-arrow">→</span>
+          </a>
+
+          <a href="https://wa.me/923444010611"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="info-card ic-wa"
+             [style.--ci]="1">
+            <div class="ic-icon">◉</div>
+            <div class="ic-text">
+              <span class="ic-label">WhatsApp</span>
+              <span class="ic-val">+92 344 4010611</span>
+            </div>
+            <span class="ic-arrow">→</span>
+          </a>
+
+          <a href="https://github.com/Shahmir-056"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="info-card ic-gh"
+             [style.--ci]="2">
+            <div class="ic-icon">◈</div>
+            <div class="ic-text">
+              <span class="ic-label">GitHub</span>
+              <span class="ic-val">github.com/Shahmir-056</span>
+            </div>
+            <span class="ic-arrow">→</span>
+          </a>
+
+        </div>
+
+        <div class="avail-strip">
+          <span class="avail-dot"></span>
+          <span class="avail-text">
+            Currently available for new opportunities
+          </span>
+        </div>
+
+      </div>
+
+      <!-- right: form -->
+      <div class="contact-right" [class.go]="v0">
+
+        <div class="form-card" *ngIf="!submitted">
+
+          <div class="form-head">
+            <span class="form-title">Send a message</span>
+            <span class="form-sub">I'll reply as soon as possible</span>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Name</label>
+            <input
+              #nameInput
+              type="text"
+              class="field-input"
+              placeholder="Shahmir Farooq"
+              [class.err]="errors.name">
+            <span class="field-err" *ngIf="errors.name">
+              Please enter your name
+            </span>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Email</label>
+            <input
+              #emailInput
+              type="email"
+              class="field-input"
+              placeholder="hello@example.com"
+              [class.err]="errors.email">
+            <span class="field-err" *ngIf="errors.email">
+              Please enter a valid email
+            </span>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Message</label>
+            <textarea
+              #msgInput
+              class="field-textarea"
+              rows="5"
+              placeholder="Tell me about your project..."
+              [class.err]="errors.msg">
+            </textarea>
+            <span class="field-err" *ngIf="errors.msg">
+              Please enter a message
+            </span>
+          </div>
+
+          <span class="mag-wrap"
+            (mousemove)="onMag($event)"
+            (mouseleave)="offMag()"
+            [style.transform]="magStyle">
+            <button
+              class="send-btn"
+              (click)="onSubmit(nameInput.value,
+                               emailInput.value,
+                               msgInput.value)">
+              Send message
+            </button>
+          </span>
+
+        </div>
+
+        <!-- success state -->
+        <div class="success-card" *ngIf="submitted">
+          <div class="success-icon">✓</div>
+          <h3 class="success-title">Message sent!</h3>
+          <p class="success-sub">
+            Thanks for reaching out. I'll get back to you within 24 hours.
+          </p>
+          <button class="reset-btn" (click)="submitted = false">
+            Send another
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

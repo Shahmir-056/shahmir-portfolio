@@ -1,0 +1,146 @@
+<section id="home" class="hero"
+  (mousemove)="onHeroMove($event)"
+  (mouseleave)="onHeroLeave()">
+
+  <canvas #networkCanvas class="network-canvas" aria-hidden="true"></canvas>
+
+  <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-3" aria-hidden="true"></div>
+
+  <div class="spotlight" [style.background]="spotlightBg"></div>
+
+  <div class="hero-grid">
+
+    <div class="hero-left">
+
+      <div class="reveal" style="--d:0">
+        <div class="available-tag">
+          <span class="available-pulse"></span>
+          Available for new opportunities
+        </div>
+      </div>
+
+      <h1 class="hero-heading reveal" style="--d:1">
+        Shahmir
+        <span class="gradient-name">Farooq</span>
+      </h1>
+
+      <div class="hero-role reveal" style="--d:2">
+        <span class="r-key">role</span>
+        <span class="r-eq">&nbsp;=&nbsp;</span>
+        <span class="r-val">"{{ currentTitle }}"</span>
+        <span class="r-cur">|</span>
+      </div>
+
+      <p class="hero-desc reveal" style="--d:3">
+        Building scalable web apps, AI&#8209;powered systems and IoT solutions
+        with Angular, Flutter, Firebase, Python and Machine Learning.
+        Clean code. Real results.
+      </p>
+
+      <div class="hero-stats reveal" style="--d:4">
+        <div class="s-item">
+          <strong>{{ stats.projects }}<span class="s-plus">+</span></strong>
+          <span class="s-lbl">Projects</span>
+        </div>
+        <div class="s-sep"></div>
+        <div class="s-item">
+          <strong>{{ stats.years }}<span class="s-plus">+</span></strong>
+          <span class="s-lbl">Years exp.</span>
+        </div>
+        <div class="s-sep"></div>
+        <div class="s-item">
+          <strong>{{ stats.clients }}<span class="s-plus">+</span></strong>
+          <span class="s-lbl">Clients</span>
+        </div>
+      </div>
+
+      <div class="hero-cta reveal" style="--d:5">
+
+        <span class="magnet-wrap"
+          (mousemove)="onMagnetMove($event, 'primary')"
+          (mouseleave)="onMagnetLeave('primary')"
+          [style.transform]="magnetTransform('primary')">
+          <a href="resume/Shahmir-Farooq-CV.pdf" download class="cta-primary">
+            Download CV
+          </a>
+        </span>
+
+        <span class="magnet-wrap"
+          (mousemove)="onMagnetMove($event, 'outline')"
+          (mouseleave)="onMagnetLeave('outline')"
+          [style.transform]="magnetTransform('outline')">
+          <a href="#projects" class="cta-outline">
+            View Projects
+          </a>
+        </span>
+
+        <span class="magnet-wrap"
+          (mousemove)="onMagnetMove($event, 'mail')"
+          (mouseleave)="onMagnetLeave('mail')"
+          [style.transform]="magnetTransform('mail')">
+          <a href="mailto:shahmir@email.com" class="cta-icon" aria-label="Email">
+            &#64;
+          </a>
+        </span>
+
+      </div>
+
+      <div class="hero-tech reveal" style="--d:6">
+        <span class="tech-key">stack&nbsp;&#8594;</span>
+        <div class="tech-chips">
+          <span>Angular</span>
+          <span>Flutter</span>
+          <span>Firebase</span>
+          <span>Python</span>
+          <span>AI&nbsp;/&nbsp;ML</span>
+          <span>C&#43;&#43;</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-right reveal" style="--d:2">
+
+      <div class="photo-halo" aria-hidden="true"></div>
+
+      <div class="float-node float-node-a" aria-hidden="true">
+        <span class="node-dot nd-indigo"></span>Angular
+      </div>
+      <div class="float-node float-node-b" aria-hidden="true">
+        <span class="node-dot nd-cyan"></span>Python
+      </div>
+      <div class="float-node float-node-c" aria-hidden="true">
+        <span class="node-dot nd-violet"></span>IoT
+      </div>
+      <div class="float-node float-node-d" aria-hidden="true">
+        <span class="node-dot nd-cyan"></span>AI&nbsp;/&nbsp;ML
+      </div>
+
+      <div class="photo-card"
+        #cardRef
+        (mousemove)="onCardMove($event, cardRef)"
+        (mouseleave)="onCardLeave()"
+        [style.transform]="cardTransform">
+        <div class="photo-inner">
+          <img src="images/profile.jpg" alt="Shahmir Farooq">
+          <div class="photo-vignette"></div>
+          <div class="photo-badge">
+            <span class="badge-dot"></span>
+            AI Engineer &middot; IoT Builder
+          </div>
+        </div>
+        <div class="card-shine" aria-hidden="true"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="scroll-cue reveal" style="--d:8" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+
+</section>

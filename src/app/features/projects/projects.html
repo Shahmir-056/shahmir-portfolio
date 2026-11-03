@@ -1,0 +1,137 @@
+<section id="projects" class="projects"
+  (mousemove)="onMove($event)"
+  (mouseleave)="onLeave()"
+  #projectsSection>
+
+  <canvas #netCanvas class="net-canvas" aria-hidden="true"></canvas>
+  <div class="spotlight" [style.background]="spotBg"></div>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="sep" aria-hidden="true"></div>
+
+  <div class="projects-inner">
+
+    <div class="eyebrow" [class.go]="v0">
+      <span class="ew-line"></span>
+      <span class="ew-num">// 03</span>
+      <span class="ew-title">Featured Projects</span>
+      <span class="ew-line"></span>
+    </div>
+
+    <div class="section-head" [class.go]="v0">
+      <h2 class="projects-h2">
+        Things I've <span class="grad-text">built</span>
+      </h2>
+      <p class="projects-sub">
+        Real-world projects spanning web, mobile, AI and IoT —
+        shipped, tested and production-ready.
+      </p>
+    </div>
+
+    <!-- featured project -->
+    <div class="featured-card" [class.go]="v1"
+         *ngIf="featured"
+         #featSection>
+
+      <div class="feat-img-wrap">
+        <img [src]="featured.image" [alt]="featured.title">
+        <div class="feat-img-overlay"></div>
+        <div class="feat-badge">Featured</div>
+      </div>
+
+      <div class="feat-body">
+
+        <div class="feat-num">01</div>
+        <h3 class="feat-title">{{ featured.title }}</h3>
+        <p class="feat-desc">{{ featured.description }}</p>
+
+        <div class="feat-chips">
+          <span *ngFor="let t of featured.technologies">{{ t }}</span>
+        </div>
+
+        <div class="feat-actions">
+          <span class="mag"
+            *ngIf="featured.demo"
+            (mousemove)="onMag($event,'fd')"
+            (mouseleave)="offMag('fd')"
+            [style.transform]="magStyle('fd')">
+            <a [href]="featured.demo"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-solid">
+              Live Demo
+            </a>
+          </span>
+          <span class="mag"
+            (mousemove)="onMag($event,'fg')"
+            (mouseleave)="offMag('fg')"
+            [style.transform]="magStyle('fg')">
+            <a [href]="featured.github"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-ghost">
+              GitHub
+            </a>
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- rest grid -->
+    <div class="cards-grid" #gridSection>
+      <div class="project-card"
+           *ngFor="let p of rest; let i = index"
+           [style.--i]="i"
+           [class.go]="v2">
+
+        <div class="card-img-wrap">
+          <img [src]="p.image" [alt]="p.title">
+          <div class="card-overlay"></div>
+          <span class="card-num">
+            {{ (i + 2).toString().padStart(2,'0') }}
+          </span>
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">{{ p.title }}</h3>
+          <p class="card-desc">{{ p.description }}</p>
+
+          <div class="card-chips">
+            <span *ngFor="let t of p.technologies">{{ t }}</span>
+          </div>
+
+          <div class="card-actions">
+            <span class="mag"
+              *ngIf="p.demo"
+              (mousemove)="onMag($event,'d'+i)"
+              (mouseleave)="offMag('d'+i)"
+              [style.transform]="magStyle('d'+i)">
+              <a [href]="p.demo"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="btn-solid btn-sm">
+                Demo
+              </a>
+            </span>
+            <span class="mag"
+              (mousemove)="onMag($event,'g'+i)"
+              (mouseleave)="offMag('g'+i)"
+              [style.transform]="magStyle('g'+i)">
+              <a [href]="p.github"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="btn-ghost btn-sm">
+                GitHub
+              </a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
